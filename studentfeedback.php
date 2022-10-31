@@ -19,7 +19,6 @@ try {
 
         // check comment empty or not
         if (!empty($comment)) {
-
             // send mail function
             $to_email = "rm15324950@gmail.com";
             $subject = "Feedback Mail";
@@ -47,10 +46,10 @@ try {
             $res1 = $con->prepare($sql1);
             $res1->execute(["REGID" => $regid, "NAME" => $name, "MOBILE" => $mobile, "COMMENT" => $comment]);
         } else {
-?>
-            <script>
-                alert("Comment box is empty!");
-            </script>
+            ?>
+<script>
+    alert("Comment box is empty!");
+</script>
 <?php
         }
     }
@@ -81,14 +80,17 @@ $con = null;
     <title>Student Feedback</title>
     <link rel="icon" type="image/x-icon" href="/sr/assets/brand/person-circle.svg">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
     </script>
 
     <!-- print page(download) -->
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="/sr/printThis.js"></script>
     <script src="/sr/custom.js"></script>
 
@@ -111,18 +113,21 @@ $con = null;
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" href="show.php"> <i class="fas fa-graduation-cap"></i> TCE</a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                aria-describedby="btnNavbarSearch" />
             <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
         </div>
     </form>
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="logout.php">Logout</a></li>
             </ul>
@@ -165,11 +170,17 @@ $con = null;
                             <div class="col-sm-6">
                                 <label for="name" class="form-label">Student Name</label><span style="color:red">
                                     *</span>
-                                <input name="name" type="text" class="form-control" id="name" aria-describedby="emailHelp" value="<?php echo $fn . " " . $ln; ?>" required>
+                                <input name="name" type="text" class="form-control" id="name"
+                                    aria-describedby="emailHelp"
+                                    value="<?php echo $fn . " " . $ln; ?>"
+                                    required>
                             </div>
                             <div class="col-sm-6">
                                 <label for="mobile" class="form-label">Mobile</label><span style="color:red"> *</span>
-                                <input name="mobile" type="number" class="form-control" id="mobile" aria-describedby="emailHelp" value="<?php echo $mobile; ?>" required>
+                                <input name="mobile" type="number" class="form-control" id="mobile"
+                                    aria-describedby="emailHelp"
+                                    value="<?php echo $mobile; ?>"
+                                    required>
                             </div>
                         </div>
                     </div>
@@ -206,7 +217,7 @@ $con = null;
                     <td>' . $row->admin_status . '</td>
                 </tr>';
                             }
-                            ?>
+?>
                         </tbody>
                     </table>
 
