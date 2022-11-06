@@ -21,11 +21,28 @@ try {
             $errorMessage = "Rollno Already Exist";
         } else {
             // main insert query
-            $sql = "INSERT INTO `student_registration` (`rollno`,`email`,`password`,`mobile`) VALUES (:ROLLNO,:EMAIL,:PASSWORD,:MOBILE)";
-            $res = $con->prepare($sql);
-            $res->execute(["ROLLNO" => $rollno, "EMAIL" => $email, "PASSWORD" => $password, "MOBILE" => $mobile]);
-            $successMessage = "Signup Success";
-            $_SESSION['SESSION_MOBILE'] = $mobile;
+            // check empty or not empty
+            if (!empty($rollno) and !empty($email) and !empty($password) and !empty($mobile)) {
+                // check email format
+                $emailcheck = filter_var($email, FILTER_VALIDATE_EMAIL);
+                $mobileNoPattern = "/^[6-9]{1}[0-9]{9}/";
+                $mobilecheck = preg_match_all($mobileNoPattern, $mobile);
+                if ($emailcheck) {
+                    if ($mobilecheck) {
+                        $sql = "INSERT INTO `student_registration` (`rollno`,`email`,`password`,`mobile`) VALUES (:ROLLNO,:EMAIL,:PASSWORD,:MOBILE)";
+                        $res = $con->prepare($sql);
+                        $res->execute(["ROLLNO" => $rollno, "EMAIL" => $email, "PASSWORD" => $password, "MOBILE" => $mobile]);
+                        $successMessage = "Signup Success";
+                        $_SESSION['SESSION_MOBILE'] = $mobile;
+                    } else {
+                        echo "<script> alert('Invalid mobile number...');</script>";
+                    }
+                } else {
+                    echo "<script> alert('Incorrect email format...');</script>";
+                }
+            } else {
+                echo "<script> alert('Enter all input...');</script>";
+            }
         }
     }
 } catch (Exception $e) {
@@ -157,7 +174,8 @@ try {
         <label for="floatingRollno">Roll No</label>
       </div>
       <div class="form-floating">
-        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+          required>
         <label for="floatingInput">Email Address</label>
       </div>
       <div class="form-floating">
@@ -167,7 +185,7 @@ try {
       </div>
       <div class="form-floating">
         <input name="mobile" type="tel" class="form-control mb-3" id="floatingMobile" placeholder="name@example.com"
-          required>
+          maxlength="10" required>
         <label for="floatingMobile">Mobile</label>
       </div>
 
@@ -184,12 +202,14 @@ try {
     </div>
     <?php
         } else {
-            ?>
+            if (!empty($rollno) and !empty($email) and !empty($password) and !empty($mobile) and $emailcheck and $mobilecheck) {
+                ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <?php echo $successMessage; ?>
     </div>
     <?php
+            }
         }
     }
 ?>

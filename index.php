@@ -108,7 +108,7 @@ try {
       -webkit-overflow-scrolling: touch;
     }
 
-    .form-signin input[type="text"] {
+    .form-signin input[type="number"] {
       margin-bottom: -1px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
@@ -136,7 +136,7 @@ try {
       <h1 class="h3 mb-3 fw-normal">Student Login</h1>
 
       <div class="form-floating">
-        <input name="rollno" type="text" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php if (isset($_COOKIE["rollno"])) {
+        <input name="rollno" type="number" class="form-control" id="floatingInput" placeholder="name@example.com" value="<?php if (isset($_COOKIE["rollno"])) {
             echo $_COOKIE["rollno"];
         } ?>" required>
         <label for="floatingInput">Roll No</label>
@@ -150,7 +150,8 @@ try {
 
       <div class="checkbox mb-3">
         <label>
-          <input name="rememberme" type="checkbox" <?php if (isset($_COOKIE["rollno"])) { ?>
+          <input name="rememberme" type="checkbox"
+            <?php if (isset($_COOKIE["rollno"])) { ?>
           checked <?php } ?>> Remember me
         </label>
       </div>
