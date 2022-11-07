@@ -25,6 +25,7 @@ try {
             if (!empty($rollno) and !empty($email) and !empty($password) and !empty($mobile)) {
                 // check email format
                 $emailcheck = filter_var($email, FILTER_VALIDATE_EMAIL);
+                // check mobile format
                 $mobileNoPattern = "/^[6-9]{1}[0-9]{9}/";
                 $mobilecheck = preg_match_all($mobileNoPattern, $mobile);
                 if ($emailcheck) {
