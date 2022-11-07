@@ -125,7 +125,7 @@ try {
       -webkit-overflow-scrolling: touch;
     }
 
-    .form-signin input[type="text"] {
+    .form-signin input[type="number"] {
       margin-bottom: -1px;
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
@@ -169,7 +169,7 @@ try {
       <h1 class="h3 mb-3 fw-normal">Studetn Signup</h1>
 
       <div class="form-floating">
-        <input name="rollno" type="text" class="form-control" id="floatingRollno" placeholder="name@example.com"
+        <input name="rollno" type="number" class="form-control" id="floatingRollno" placeholder="name@example.com"
           required>
         <label for="floatingRollno">Roll No</label>
       </div>
